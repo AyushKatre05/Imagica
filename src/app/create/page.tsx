@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/ui/modeToggle";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
   const [prompt, setPrompt] = useState("");
@@ -27,7 +29,7 @@ export default function Home() {
       setImageURL(url);
       setLoading(false);
     } else {
-      alert("Error fetching image");
+      toast.error("Error fetching image");
       setLoading(false);
     }
   };
@@ -106,6 +108,9 @@ export default function Home() {
           />
         </motion.div>
       )}
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 }
